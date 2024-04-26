@@ -310,8 +310,8 @@ hold off
 bw = 0.4;
 
 figure
-figWidth = 900; % Width in pixels
-figHeight = 600; % Height in pixels
+figWidth = 900;
+figHeight = 600;
 set(gcf, 'Position', [100, 100, figWidth, figHeight])
 
 % Smooth and plot isi_noadapt
