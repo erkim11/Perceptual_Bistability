@@ -306,3 +306,38 @@ ylabel('stimulus', 'FontSize', 16)
 legend('s1', 's2', 'FontSize', 16)
 title('out-to-in direction', 'FontSize', 16)
 hold off
+
+bw = 0.4;
+
+figure
+figWidth = 900; % Width in pixels
+figHeight = 600; % Height in pixels
+set(gcf, 'Position', [100, 100, figWidth, figHeight])
+
+% Smooth and plot isi_noadapt
+[f_noadapt, x_noadapt] = ksdensity(isi_noadapt, 'Support', 'positive', 'Bandwidth', bw);
+plot(x_noadapt, f_noadapt, 'Color', '#0072BD');
+hold on;
+
+% Smooth and plot isi20
+[f20, x20] = ksdensity(isi1, 'Support', 'positive', 'Bandwidth', bw);
+plot(x20, f20, 'Color', '#D95319');
+
+% Smooth and plot isi40
+[f40, x40] = ksdensity(isi5, 'Support', 'positive', 'Bandwidth', bw);
+plot(x40, f40, 'Color', '#EDB120');
+
+% Smooth and plot isi60
+[f60, x60] = ksdensity(isi10, 'Support', 'positive', 'Bandwidth', bw);
+plot(x60, f60, 'Color', '#7E2F8E');
+
+% Smooth and plot isi80
+[f80, x80] = ksdensity(isi20, 'Support', 'positive', 'Bandwidth', bw);
+plot(x80, f80, 'Color', '#77AC30');
+
+xlim([80 3000]);
+xlabel('time intervals (0.1 ms)', 'FontSize', 16);
+ylabel('density', 'FontSize', 16);
+% title('ISI Distributions');
+legend({'zero adapt', 'sigma = 1', 'sigma = 5', 'sigma = 10', 'sigma = 20'}, 'FontSize', 16);
+hold off;
